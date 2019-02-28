@@ -117,7 +117,7 @@ func (a *App) Run(arguments []string) error {
 	return nil
 }
 
-// Returns the named command on App. Returns nil if the command does not exist
+// Command returns the named command on App. Returns nil if the command does not exist
 func (a *App) Command(name string) *Command {
 	for _, c := range a.Commands {
 		if c.HasName(name) {

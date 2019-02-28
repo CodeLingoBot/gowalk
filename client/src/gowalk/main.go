@@ -93,6 +93,16 @@ client -> (SSL握手) -> server
 当接收到CONNECT请求的时候，应答OK，并且将该连接通过channel转发到Accept函数里面
 Accept接受到channel后，完成SSL握手
 握手完成后，返回出net.Conn对象，就好像接收到一个标准的连接
+*/handler模拟成Listener接口，供Server()函数使用
+Accept的net.Conn来源为https的代理请求
+https的代理程序流程为
+client -> (CONNECT) -> server
+server -> (OK) -> client
+client -> (SSL握手) -> server
+所以https代理先由普通的http代理模块处理
+当接收到CONNECT请求的时候，应答OK，并且将该连接通过channel转发到Accept函数里面
+Accept接受到channel后，完成SSL握手
+握手完成后，返回出net.Conn对象，就好像接收到一个标准的连接
 */
 func (h *handler) Accept() (net.Conn, error) {
 	for {

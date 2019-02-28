@@ -66,7 +66,7 @@ func NewOpaqueReader(r io.Reader) *OpaqueReader {
 	return &OpaqueReader{r: r}
 }
 
-// Read the next OpaquePacket.
+// Next reads the next OpaquePacket.
 func (or *OpaqueReader) Next() (op *OpaquePacket, err error) {
 	tag, _, contents, err := readHeader(or.r)
 	if err != nil {

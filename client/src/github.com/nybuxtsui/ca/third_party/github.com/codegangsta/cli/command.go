@@ -74,7 +74,7 @@ func (c Command) Run(ctx *Context) error {
 	return nil
 }
 
-// Returns true if Command.Name or Command.ShortName matches given name
+// HasName returns true if Command.Name or Command.ShortName matches given name
 func (c Command) HasName(name string) bool {
 	return c.Name == name || c.ShortName == name
 }

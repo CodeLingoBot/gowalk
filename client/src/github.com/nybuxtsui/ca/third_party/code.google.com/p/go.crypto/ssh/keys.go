@@ -73,7 +73,7 @@ func parseAuthorizedKey(in []byte) (out PublicKey, comment string, ok bool) {
 	return
 }
 
-// ParseAuthorizedKeys parses a public key from an authorized_keys
+// ParseAuthorizedKey parses a public key from an authorized_keys
 // file used in OpenSSH according to the sshd(8) manual page.
 func ParseAuthorizedKey(in []byte) (out PublicKey, comment string, options []string, rest []byte, ok bool) {
 	for len(in) > 0 {
@@ -498,7 +498,7 @@ func (k *ecdsaPrivateKey) Sign(rand io.Reader, data []byte) ([]byte, error) {
 	return sig, nil
 }
 
-// NewPrivateKey takes a pointer to rsa, dsa or ecdsa PrivateKey
+// NewSignerFromKey takes a pointer to rsa, dsa or ecdsa PrivateKey
 // returns a corresponding Signer instance. EC keys should use P256,
 // P384 or P521.
 func NewSignerFromKey(k interface{}) (Signer, error) {
@@ -540,7 +540,7 @@ func NewPublicKey(k interface{}) (PublicKey, error) {
 	return sshKey, nil
 }
 
-// ParsePublicKey parses a PEM encoded private key. It supports
+// ParsePrivateKey parses a PEM encoded private key. It supports
 // PKCS#1, RSA, DSA and ECDSA private keys.
 func ParsePrivateKey(pemBytes []byte) (Signer, error) {
 	block, _ := pem.Decode(pemBytes)

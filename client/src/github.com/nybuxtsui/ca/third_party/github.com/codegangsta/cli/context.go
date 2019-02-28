@@ -91,13 +91,13 @@ func (c *Context) IsSet(name string) bool {
 
 type Args []string
 
-// Returns the command line arguments associated with the context.
+// Args returns the command line arguments associated with the context.
 func (c *Context) Args() Args {
 	args := Args(c.flagSet.Args())
 	return args
 }
 
-// Returns the nth argument, or else a blank string
+// Get returns the nth argument, or else a blank string
 func (a Args) Get(n int) string {
 	if len(a) > n {
 		return a[n]
@@ -105,12 +105,12 @@ func (a Args) Get(n int) string {
 	return ""
 }
 
-// Returns the first argument, or else a blank string
+// First returns the first argument, or else a blank string
 func (a Args) First() string {
 	return a.Get(0)
 }
 
-// Return the rest of the arguments (not the first one)
+// Tail returns the rest of the arguments (not the first one)
 // or else an empty string slice
 func (a Args) Tail() []string {
 	if len(a) >= 2 {
@@ -119,7 +119,7 @@ func (a Args) Tail() []string {
 	return []string{}
 }
 
-// Checks if there are any arguments present
+// Present checks if there are any arguments present
 func (a Args) Present() bool {
 	return len(a) != 0
 }
